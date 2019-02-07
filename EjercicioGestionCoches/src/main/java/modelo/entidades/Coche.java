@@ -1,6 +1,7 @@
 package modelo.entidades;
 
-public class Coche {
+public class Coche implements Comparable<Coche> {
+	private int id;
 	private String matricula;
 	private String marca;
 	private String modelo;
@@ -9,11 +10,18 @@ public class Coche {
 	public Coche() {}
 	
 	public Coche(String matricula, String marca, String modelo, int kilometraje) {
-		super();
 		this.matricula = matricula;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.kilometraje = kilometraje;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getMatricula() {
@@ -50,8 +58,8 @@ public class Coche {
 
 	@Override
 	public String toString() {
-		return "Coche [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", kilometraje="
-				+ kilometraje + "]";
+		return "Coche [id=" + id + ", matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo
+				+ ", kilometraje=" + kilometraje + "]";
 	}
 
 	@Override
@@ -77,6 +85,11 @@ public class Coche {
 		} else if (!matricula.equals(other.matricula))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Coche o) {
+		return this.matricula.compareTo(o.getMatricula());
 	}
 			
 }

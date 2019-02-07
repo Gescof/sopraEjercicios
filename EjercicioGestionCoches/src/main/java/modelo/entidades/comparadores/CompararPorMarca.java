@@ -1,6 +1,8 @@
-package modelo.entidades;
+package modelo.entidades.comparadores;
 
 import java.util.Comparator;
+
+import modelo.entidades.Coche;
 
 public class CompararPorMarca implements Comparator<Coche> {
 

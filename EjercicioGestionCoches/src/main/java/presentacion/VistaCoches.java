@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import modelo.entidades.Coche;
+import modelo.entidades.comparadores.CompararPorKm;
+import modelo.entidades.comparadores.CompararPorMarca;
 import modelo.negocio.GestorCoches;
 
 public class VistaCoches {
@@ -102,7 +104,7 @@ public class VistaCoches {
 			System.out.println("Lista de coches vacia.");
 		} else {
 			System.out.println("Lista ordenada por matricula:");
-			gestorCoches.ordenarListaPorMatricula().forEach(coche->System.out.println(coche));
+			gestorCoches.ordenarCoches(null).forEach(coche->System.out.println(coche));
 		}
 	}
 	
@@ -111,7 +113,7 @@ public class VistaCoches {
 			System.out.println("Lista de coches vacia.");
 		} else {
 			System.out.println("Lista ordenada por kilometraje:");
-			gestorCoches.ordenarListaPorKm().forEach(coche->System.out.println(coche));
+			gestorCoches.ordenarCoches(context.getBean("comparadorKms", CompararPorKm.class)).forEach(coche->System.out.println(coche));
 		}
 	}
 	
@@ -120,7 +122,7 @@ public class VistaCoches {
 			System.out.println("Lista de coches vacia.");
 		} else {
 			System.out.println("Lista ordenada por marca:");
-			gestorCoches.ordenarListaPorMarca().forEach(coche->System.out.println(coche));
+			gestorCoches.ordenarCoches(context.getBean("comparadorMarcas", CompararPorMarca.class)).forEach(coche->System.out.println(coche));
 		}
 	}
 	

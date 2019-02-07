@@ -1,12 +1,10 @@
 package modelo.negocio;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import modelo.entidades.Coche;
-import modelo.entidades.CompararPorKm;
-import modelo.entidades.CompararPorMarca;
-import modelo.entidades.CompararPorMatricula;
 import modelo.persistencia.DAOCoche;
 
 public class GestorCoches {
@@ -34,21 +32,9 @@ public class GestorCoches {
 		return result;
 	}
 	
-	public List<Coche> ordenarListaPorMatricula() {
+	public List<Coche> ordenarCoches(Comparator<Coche> comparador) {
 		List<Coche> listaCoches = daoCoche.getListaCoches();
-		Collections.sort(listaCoches, new CompararPorMatricula());
-		return listaCoches;
-	}
-	
-	public List<Coche> ordenarListaPorKm() {
-		List<Coche> listaCoches = daoCoche.getListaCoches();
-		Collections.sort(listaCoches, new CompararPorKm());
-		return listaCoches;
-	}
-	
-	public List<Coche> ordenarListaPorMarca() {
-		List<Coche> listaCoches = daoCoche.getListaCoches();
-		Collections.sort(listaCoches, new CompararPorMarca());
+		Collections.sort(listaCoches, comparador);
 		return listaCoches;
 	}
 	

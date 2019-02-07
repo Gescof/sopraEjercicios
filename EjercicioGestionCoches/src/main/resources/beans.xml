@@ -14,5 +14,10 @@
 	<bean id="gestorCoches" class="modelo.negocio.GestorCoches">
 		<property name="DAOCoche" ref="daoCoche"></property>
 	</bean>
+	
+	<!-- No es necesario tener este comparador.
+	<bean id="comparadorMatriculas" class="modelo.entidades.comparadores.CompararPorMatricula"></bean> -->
+	<bean id="comparadorKms" class="modelo.entidades.comparadores.CompararPorKm"></bean>
+	<bean id="comparadorMarcas" class="modelo.entidades.comparadores.CompararPorMarca"></bean>
 
 </beans>
