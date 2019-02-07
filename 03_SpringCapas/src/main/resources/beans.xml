@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="director" class="modelo.entidades.Director" scope="prototype"></bean>
+	
+	<bean id="pelicula" class="modelo.entidades.Pelicula" scope="prototype"></bean>
+	
+	<bean id="daoPelicula" class="modelo.persistencia.DAOPelicula">
+		<property name="maximoPeliculas" value="4"></property>
+		<property name="listaPeliculas" ref="listaPeliculas"></property>
+	</bean>
+	
+	<bean id="listaPeliculas" class="java.util.ArrayList"></bean>
+	
+	<bean id="gestorPeliculas" class="modelo.negocio.GestorPeliculas">
+		<property name="daoPelicula" ref="daoPelicula"></property>
+	</bean>
+
+</beans>
