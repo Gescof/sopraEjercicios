@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="listaHabitacionesCasaGrande" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="habitacion1"/>
+				<ref bean="habitacion2"/>
+				<ref bean="habitacion3"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="listaInquilinosCasaGrande" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="inquilino1"/>
+				<ref bean="inquilino2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="casaGrande" class="ejercicioPortalCasas.Casa" scope="singleton">
+		<property name="precio" value="200000"></property>
+		<property name="direccion">
+			<bean class="ejercicioPortalCasas.Direccion">
+				<property name="tipoVia" value="Calle"></property>
+				<property name="nombreVia" value="Gran Via"></property>
+				<property name="codPostal" value="28013"></property>
+				<property name="pais" value="España"></property>
+			</bean>
+		</property>
+		<property name="habitaciones" ref="listaHabitacionesCasaGrande"></property>
+		<property name="inquilinos" ref="listaInquilinosCasaGrande"></property>
+		<property name="propietario">
+			<bean class="ejercicioPortalCasas.Persona">
+				<property name="nombre" value="Gilmar"></property>
+				<property name="direccion">
+					<bean class="ejercicioPortalCasas.Direccion">
+						<property name="tipoVia" value="Plaza"></property>
+						<property name="nombreVia" value="de la Moraleja"></property>
+						<property name="codPostal" value="28109"></property>
+						<property name="pais" value="España"></property>
+					</bean>
+				</property>
+				<property name="edad" value="40"></property>
+				<property name="peso" value="999999"></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="inquilino1" class="ejercicioPortalCasas.Persona">
+		<property name="nombre" value="Guillermo"></property>
+		<property name="direccion">
+			<bean class="ejercicioPortalCasas.Direccion">
+				<property name="tipoVia" value="Calle"></property>
+				<property name="nombreVia" value="Rio Corrientes"></property>
+				<property name="codPostal" value="28018"></property>
+				<property name="pais" value="España"></property>
+			</bean>
+		</property>
+		<property name="edad" value="23"></property>
+		<property name="peso" value="60"></property>
+	</bean>
+	
+	<bean id="inquilino2" class="ejercicioPortalCasas.Persona">
+		<property name="nombre" value="Pedro"></property>
+		<property name="direccion">
+			<bean class="ejercicioPortalCasas.Direccion">
+				<property name="tipoVia" value="Paseo"></property>
+				<property name="nombreVia" value="de las Acacias"></property>
+				<property name="codPostal" value="28020"></property>
+				<property name="pais" value="España"></property>
+			</bean>
+		</property>
+		<property name="edad" value="26"></property>
+		<property name="peso" value="70"></property>
+	</bean>
+	
+	<bean id="habitacion1" class="ejercicioPortalCasas.Habitacion">
+		<property name="tipoHabitacion" value="cocina"></property>
+		<property name="superficie" value="15"></property>
+		<property name="tieneVentanas" value="true"></property>
+	</bean>
+	
+	<bean id="habitacion2" class="ejercicioPortalCasas.Habitacion">
+		<property name="tipoHabitacion" value="dormitorio"></property>
+		<property name="superficie" value="20"></property>
+		<property name="tieneVentanas" value="true"></property>
+	</bean>
+	
+	<bean id="habitacion3" class="ejercicioPortalCasas.Habitacion">
+		<property name="tipoHabitacion" value="dormitorio"></property>
+		<property name="superficie" value="20"></property>
+		<property name="tieneVentanas" value="true"></property>
+	</bean>
+
+</beans>

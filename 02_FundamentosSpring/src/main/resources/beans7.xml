@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="listaNombres" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>Harry Potter</value>
+				<value>Hermione</value>
+				<value>Ron</value>
+				<value>Dumbledore</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="persona1" class="ejemplo7.Persona">
+		<property name="nombre" value="Hector"></property>
+		<property name="edad" value="30"></property>
+	</bean>
+	
+	<bean id="persona2" class="ejemplo7.Persona">
+		<property name="nombre" value="Juan"></property>
+		<property name="edad" value="81"></property>
+	</bean>
+	
+	<bean id="colecciones" class="ejemplo7.Colecciones">
+		<property name="listaPersonas">
+			<list>
+				<bean class="ejemplo7.Persona">
+					<property name="nombre" value="Pepe"></property>
+					<property name="edad" value="26"></property>
+				</bean>
+				<ref bean="persona1"/>
+			</list>
+		</property>
+		<property name="conjuntoCadenas">
+			<set>
+				<value>Rojo</value>
+				<value>Verde</value>
+				<value>Azul</value>
+			</set>
+		</property>
+		<property name="mapaPersonas">
+			<map>
+				<entry key="1" value-ref="persona2"></entry>
+				<entry key="2">
+					<bean class="ejemplo7.Persona">
+						<property name="nombre" value="Bud Spencer"></property>
+						<property name="edad" value="100"></property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

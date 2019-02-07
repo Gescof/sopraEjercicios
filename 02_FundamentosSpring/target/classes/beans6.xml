@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Se puede usar el atributo init-method que invoca a un método 
+	para inicializar la plantilla.
+	Además. también puede añadirse un destructor -->
+	<bean id="personaBean" 
+		class="ejemplo6.Persona" 
+		init-method="inicializar" 
+		destroy-method="destruir"
+		scope="prototype">
+	</bean>
+	
+</beans>

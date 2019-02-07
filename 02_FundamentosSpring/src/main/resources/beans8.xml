@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- autowire es un atributo para autoinyectar propiedades compuestas.
+	Spring busca un objeto acorde para inyectar en todas las propiedades que pueda.
+	Dos formas: byName (id del bean a inyectar), byType (nombre de la clase del bean). -->
+	<bean id="persona" class="ejemplo8.Persona" autowire="byName">
+		<property name="nombre" value="Bob Esponja"></property>
+		<property name="edad" value="50"></property>
+		<property name="peso" value="0.150"></property>
+	</bean>
+	
+	<!-- Aquí no se podría autoinyectar byType 
+	porque hay dos referencias con el mismo tipo (clase Direccion)-->
+	<bean id="direccion" class="ejemplo8.Direccion">
+		<property name="tipoVia" value="Piña"></property>
+		<property name="nombreVia" value="Debajo del mar"></property>
+		<property name="codPostal" value="desconocido"></property>
+		<property name="pais" value="Aguas Internacionales"></property>
+	</bean>
+	
+	<bean id="direccion2" class="ejemplo8.Direccion">
+		<property name="tipoVia" value="Piña"></property>
+		<property name="nombreVia" value="Debajo del mar"></property>
+		<property name="codPostal" value="desconocido"></property>
+		<property name="pais" value="Aguas Internacionales"></property>
+	</bean>
+	
+</beans>

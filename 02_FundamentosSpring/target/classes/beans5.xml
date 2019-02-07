@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="listaPersonas" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="personaInner1"/>
+				<ref bean="personaInner2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Se pueden inicializar las propiedades a través del constructor -->
+	<bean id="personaInner1" class="ejemplo5.Persona">
+		<constructor-arg value="Pepe"></constructor-arg>
+		<constructor-arg value="45"></constructor-arg>
+		<constructor-arg value="67.5"></constructor-arg>
+		<constructor-arg>
+			<bean class="ejemplo5.Direccion">
+				<constructor-arg value="Calle"></constructor-arg>
+				<constructor-arg value="Diamante"></constructor-arg>
+				<constructor-arg value="28224"></constructor-arg>
+				<constructor-arg value="España"></constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Se pude especificar la posición del atributo a inicializar -->
+	<bean id="personaInner2" class="ejemplo5.Persona">
+		<constructor-arg index="0" value="Marta"></constructor-arg>
+		<constructor-arg index="1" value="60"></constructor-arg>
+		<constructor-arg index="2" value="55.5"></constructor-arg>
+		<constructor-arg>
+			<bean class="ejemplo5.Direccion">
+				<constructor-arg index="0" value="Calle"></constructor-arg>
+				<constructor-arg value="Gran Via"></constructor-arg>
+				<constructor-arg value="28030"></constructor-arg>
+				<constructor-arg value="España"></constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+</beans>
