@@ -2,6 +2,8 @@ package modelo.persistencia;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +12,8 @@ import modelo.entidades.Pelicula;
 @Repository
 public class DAOPelicula {
 	
-	@Autowired
+	// Aqui con Autowired, se inyecta un bean de tipo Pelicula a la lista
+	@Resource
 	private List<Pelicula> listaPeliculas;
 	
 	@Autowired

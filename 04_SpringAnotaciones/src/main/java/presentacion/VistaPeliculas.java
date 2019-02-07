@@ -49,8 +49,8 @@ public class VistaPeliculas {
 			System.out.println("¿Desea continuar? (y/n): ");
 			continuar = sc.nextLine();
 		} while(continuar.equals("y"));
-//		List<Pelicula> listaPeliculas = context.getBean("listaPeliculas", List.class);
-//		listaPeliculas.forEach(pelicula->System.out.println(pelicula));
+		List<Pelicula> listaPeliculas = context.getBean("listaPeliculas", List.class);
+		listaPeliculas.forEach(pelicula->System.out.println(pelicula));
 		gestorPeliculas.getDaoPelicula().getListaPeliculas().forEach(pelicula->System.out.println(pelicula));
 	}
 }
