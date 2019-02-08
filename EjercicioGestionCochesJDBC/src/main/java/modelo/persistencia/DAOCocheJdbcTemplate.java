@@ -25,7 +25,7 @@ public class DAOCocheJdbcTemplate implements DAOCoche {
 		boolean result = false;
 		jdbcTemplate.execute("SET autocommit = 0");
 		String query = "INSERT INTO Coches (matricula, marca, modelo, kilometraje)"
-					+ " VALUES (?, ?, ?, ?)";
+						+ " VALUES (?, ?, ?, ?)";
 		jdbcTemplate.update(query,
 				coche.getMatricula(),
 				coche.getMarca(),

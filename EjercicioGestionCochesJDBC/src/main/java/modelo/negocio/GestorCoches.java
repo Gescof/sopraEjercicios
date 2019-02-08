@@ -20,15 +20,7 @@ public class GestorCoches {
 	
 	public boolean insertar(Coche coche) {
 		boolean result = false;
-		if(coche.getMatricula().length() == 7) {
-			if(!daoCoche.getListaCoches().contains(coche)) {
-				result = daoCoche.insertar(coche);
-			} else {
-				System.out.println("Ya existe un coche con la misma matricula.");
-			}
-		} else {
-			System.out.println("La matricula debe tener 7 caracteres.");
-		}
+		result = daoCoche.insertar(coche);
 		return result;
 	}
 	

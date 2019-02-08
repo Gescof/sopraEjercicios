@@ -137,24 +137,25 @@ public class VistaCoches {
 		
 		Coche cocheMod = gestorCoches.buscarCoche(coche);
 		
-		System.out.println("Introduzca la nueva matricula: ");
-		String matricula = sc.nextLine();
-		cocheMod.setMatricula(matricula);
-		
-		System.out.println("Introduzca la nueva marca: ");
-		String marca = sc.nextLine();
-		cocheMod.setMarca(marca);
-		
-		System.out.println("Introduzca el nuevo modelo: ");
-		String modelo = sc.nextLine();
-		cocheMod.setModelo(modelo);
-		
-		System.out.println("Introduzca el nuevo valor de kilometraje: ");
-		String kmStr = sc.nextLine();
-		int kilometraje = Integer.parseInt(kmStr);
-		cocheMod.setKilometraje(kilometraje);
-		
-		if(gestorCoches.modificarCoche(cocheMod)) {
+		if(cocheMod != null) {
+			System.out.println("Introduzca la nueva matricula: ");
+			String matricula = sc.nextLine();
+			cocheMod.setMatricula(matricula);
+			
+			System.out.println("Introduzca la nueva marca: ");
+			String marca = sc.nextLine();
+			cocheMod.setMarca(marca);
+			
+			System.out.println("Introduzca el nuevo modelo: ");
+			String modelo = sc.nextLine();
+			cocheMod.setModelo(modelo);
+			
+			System.out.println("Introduzca el nuevo valor de kilometraje: ");
+			String kmStr = sc.nextLine();
+			int kilometraje = Integer.parseInt(kmStr);
+			cocheMod.setKilometraje(kilometraje);
+			
+			gestorCoches.modificarCoche(cocheMod);
 			System.out.println("Coche modificado con exito.");
 		} else {
 			System.out.println("No se ha podido modificar el coche. No existe un coche con ese ID en la base de datos.");
