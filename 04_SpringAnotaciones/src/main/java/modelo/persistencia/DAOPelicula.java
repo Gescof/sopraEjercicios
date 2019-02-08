@@ -14,6 +14,8 @@ public class DAOPelicula {
 	
 	// Aqui con Autowired, se inyecta un bean de tipo Pelicula a la lista
 	@Resource
+	// Con Resource el nombre del atributo debe llamarse igual 
+	// que el nombre de la propiedad en el beans
 	private List<Pelicula> listaPeliculas;
 	
 	@Autowired
