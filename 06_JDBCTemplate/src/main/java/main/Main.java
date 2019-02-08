@@ -24,7 +24,7 @@ public class Main {
 		p1.setYear(2019);
 		daoPelicula.insertar(p1);
 		
-		System.out.println(daoPelicula.buscar("Star Wars 9"));
+		System.out.println(daoPelicula.buscar(p1.getId()));
 		
 		daoPelicula.borrar(p1);
 		
@@ -43,7 +43,7 @@ public class Main {
 		daoPelicula.insertar(p3);
 		System.out.println(daoPelicula.buscar(p3.getId()));
 		
-		Pelicula pAux = daoPelicula.buscar("Avatar");
+		Pelicula pAux = daoPelicula.buscar(p3.getId());
 		pAux.setYear(2009);
 		daoPelicula.modificar(pAux);
 		

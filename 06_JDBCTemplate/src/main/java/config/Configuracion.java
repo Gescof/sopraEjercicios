@@ -22,7 +22,7 @@ public class Configuracion {
 		// la configuracion para conectarse con la BBDD.
 		// En este caso, a MySQL 8.
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/cursospring_esquema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/cursospring_esquema?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false");
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 		return dataSource;

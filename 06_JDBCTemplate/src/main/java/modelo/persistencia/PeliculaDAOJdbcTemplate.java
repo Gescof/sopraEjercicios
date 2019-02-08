@@ -20,82 +20,61 @@ public class PeliculaDAOJdbcTemplate implements PeliculaDAO {
 
 	@Override
 	public void insertar(Pelicula pelicula) {
-		try {
-			String query = "INSERT INTO Peliculas (titulo, director, genero, year)"
-						+ " VALUES (?, ?, ?, ?)";
-			jdbcTemplate.update(query,
-					pelicula.getTitulo(),
-					pelicula.getDirector(),
-					pelicula.getGenero(),
-					pelicula.getYear());
-		} catch(EmptyResultDataAccessException e) {
-			e.printStackTrace();
-		}
+		jdbcTemplate.execute("SET autocommit = 0");
+		String query = "INSERT INTO Peliculas (titulo, director, genero, year)"
+					+ " VALUES (?, ?, ?, ?)";
+		jdbcTemplate.update(query,
+				pelicula.getTitulo(),
+				pelicula.getDirector(),
+				pelicula.getGenero(),
+				pelicula.getYear());
+		jdbcTemplate.execute("COMMIT");
 	}
 
 	@Override
 	public void modificar(Pelicula pelicula) {
-		try {
-			String query = "UPDATE Peliculas SET titulo = ?, director = ?, genero = ?, year = ?"
-					+ " WHERE id = ?";
-			jdbcTemplate.update(query,
-				pelicula.getTitulo(),
-				pelicula.getDirector(),
-				pelicula.getGenero(),
-				pelicula.getYear(),
-				pelicula.getId());
-		} catch(EmptyResultDataAccessException e) {
-			e.printStackTrace();
-		}
+		jdbcTemplate.execute("SET autocommit = 0");
+		String query = "UPDATE Peliculas SET titulo = ?, director = ?, genero = ?, year = ?"
+				+ " WHERE id = ?";
+		jdbcTemplate.update(query,
+			pelicula.getTitulo(),
+			pelicula.getDirector(),
+			pelicula.getGenero(),
+			pelicula.getYear(),
+			pelicula.getId());
+		jdbcTemplate.execute("COMMIT");
 	}
 
 	@Override
 	public void borrar(Pelicula pelicula) {
-		try {
-			String query = "DELETE FROM Peliculas WHERE id = ?";
-			jdbcTemplate.update(query, pelicula.getId());
-		} catch(EmptyResultDataAccessException e) {
-			e.printStackTrace();
-		}
+		jdbcTemplate.execute("SET autocommit = 0");
+		String query = "DELETE FROM Peliculas WHERE id = ?";
+		jdbcTemplate.update(query, pelicula.getId());
+		jdbcTemplate.execute("COMMIT");
 	}
 
 	@Override
 	public Pelicula buscar(Integer id) {
-		try {
-			String query = "SELECT * FROM Peliculas WHERE id = ?";
-//			BeanPropertyRowMapper<Pelicula> beanMapper = new BeanPropertyRowMapper<>();
-			Pelicula pelicula = jdbcTemplate.queryForObject(query, peliculaMapper, id);
-			return pelicula;
-		} catch(EmptyResultDataAccessException e) {
-			e.printStackTrace();
-			return null;
-		}
+		String query = "SELECT sql_no_cache * FROM Peliculas WHERE id = ?";
+//		BeanPropertyRowMapper<Pelicula> beanMapper = new BeanPropertyRowMapper<>();
+		Pelicula pelicula = jdbcTemplate.queryForObject(query, peliculaMapper, id);
+		return pelicula;
 	}
 	
-	@Override
-	public Pelicula buscar(String titulo) {
-		try {
-			String query = "SELECT * FROM Peliculas WHERE titulo = ?";
-//			BeanPropertyRowMapper<Pelicula> beanMapper = new BeanPropertyRowMapper<>();
-			Pelicula pelicula = jdbcTemplate.queryForObject(query, peliculaMapper, titulo);
-			return pelicula;
-		} catch(EmptyResultDataAccessException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+//	@Override
+//	public Pelicula buscar(String titulo) {
+//		String query = "SELECT sql_no_cache * FROM Peliculas WHERE titulo = :titulo";
+////	BeanPropertyRowMapper<Pelicula> beanMapper = new BeanPropertyRowMapper<>();
+//		Pelicula pelicula = jdbcTemplate.queryForObject(query, peliculaMapper, titulo);
+//		return pelicula;
+//	}
 
 	@Override
 	public List<Pelicula> listarPeliculas() {
-		try {
-			String query = "SELECT * FROM Peliculas";
-//			BeanPropertyRowMapper<Pelicula> beanMapper = new BeanPropertyRowMapper<>();
-			List<Pelicula> listaPeliculas  = jdbcTemplate.query(query, peliculaMapper);
-			return listaPeliculas;
-		} catch(EmptyResultDataAccessException e) {
-			e.printStackTrace();
-			return null;
-		}
+		String query = "SELECT sql_no_cache * FROM Peliculas";
+//		BeanPropertyRowMapper<Pelicula> beanMapper = new BeanPropertyRowMapper<>();
+		List<Pelicula> listaPeliculas  = jdbcTemplate.query(query, peliculaMapper);
+		return listaPeliculas;
 	}
 
 }

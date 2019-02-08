@@ -9,6 +9,6 @@ public interface PeliculaDAO {
 	void modificar(Pelicula pelicula);
 	void borrar(Pelicula pelicula);
 	Pelicula buscar(Integer id);
-	Pelicula buscar(String titulo);
+//	Pelicula buscar(String titulo);
 	List<Pelicula> listarPeliculas();
 }
