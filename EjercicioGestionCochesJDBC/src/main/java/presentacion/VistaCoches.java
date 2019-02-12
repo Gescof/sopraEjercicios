@@ -172,7 +172,8 @@ public class VistaCoches {
 	}
 	
 	private static void getOrdenadaPorMatr() {
-		if(gestorCoches.getDAOCoche().getListaCoches().isEmpty()) {
+		List<Coche> listaCoches = gestorCoches.getDAOCoche().getListaCoches();
+		if(listaCoches.isEmpty()) {
 			System.out.println("Lista de coches vacia.");
 		} else {
 			System.out.println("Lista ordenada por matricula:");
@@ -181,7 +182,8 @@ public class VistaCoches {
 	}
 	
 	private static void getOrdenadaPorKm() {
-		if(gestorCoches.getDAOCoche().getListaCoches().isEmpty()) {
+		List<Coche> listaCoches = gestorCoches.getDAOCoche().getListaCoches();
+		if(listaCoches.isEmpty()) {
 			System.out.println("Lista de coches vacia.");
 		} else {
 			System.out.println("Lista ordenada por kilometraje:");
@@ -190,7 +192,8 @@ public class VistaCoches {
 	}
 	
 	private static void getOrdenadaPorMarca() {
-		if(gestorCoches.getDAOCoche().getListaCoches().isEmpty()) {
+		List<Coche> listaCoches = gestorCoches.getDAOCoche().getListaCoches();
+		if(listaCoches.isEmpty()) {
 			System.out.println("Lista de coches vacia.");
 		} else {
 			System.out.println("Lista ordenada por marca:");
