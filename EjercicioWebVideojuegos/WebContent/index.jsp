@@ -13,8 +13,8 @@
 	
 	<div align="center">
 		<form action="mvc/usuarios/ingresarListadoVideojuegos">
-			Nombre de usuario:<input type="text" name="nombre">
-			Contraseña:<input type="password" name="password">
+			Nombre de usuario:<input type="text" name="${usuario.nombre}">
+			Contraseña:<input type="password" name="${usuario.password}">
 			<input type="submit" value="Ingresar">
 		</form>
 	</div>

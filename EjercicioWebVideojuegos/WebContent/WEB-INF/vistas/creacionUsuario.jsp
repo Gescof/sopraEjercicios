@@ -9,6 +9,8 @@
 <body>
 	<h1 align="center" style="color:blue">Rellene los siguientes campos</h1>
 	
+	<h3 align="center" style="color:red">${error}</h3>
+	
 	<div align="center">
 		<form action="insertarUsuario" method="post">
 			<p>Nombre de usuario</p>
