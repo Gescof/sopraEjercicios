@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: EjercicioSpringBootRest
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: aula3m
+Implementation-Vendor-Id: EjercicioSpringBootRest
+Build-Jdk: 1.8.0_171
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/EjercicioSpringBootRest
+Created-By: Maven Integration for Eclipse
+
