@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+// Comentario de una linea
+
+/*
+ * Comentario de múltiples líneas.
+ * JavaScript es un lenguaje interpretado.
+ * Es secuencial y orientado a objetos, por prototipado.
+ * También es funcional.
+ * Es fuertemente no tipado.
+ */
+ 
+ alert("No hay que hacer alerts");
+ console.log("Esto es un poco mejor que los alerts");
+ 
+ // Variables.
+ // Se puede guardar cualquier cosa.
+ // No tienen declaración.
+ 
+ numero1 = 1;
+ numero2 = 1.5;
+ texto1 = 'hola';
+ texto2 = "Adios";
+ boolean1 = true;
+ boolean2 = false;
+ 
+ console.log(numero1);
+ console.log(numero2);
+ console.log(texto1);
+ console.log(texto2);
+ console.log(boolean1);
+ console.log(boolean2);
+ 
+ var dato = 5;
+ var dato = 7;
+ // Se pueden redefinir las variables.
+ var cualquiera; 
+ // Se pueden dejar variables sin declarar.
+ // El valor será undefined.
+ 
+ console.log(cualquiera);
+ 
+ var referencia = null;
+ // null es un tipo de valor en JS.
+ // null indica que la variable guardará una referencia,
+ // pero no sabemos a dónde.
+ 
+ referencia = 7;
+ referencia = "Siete";
+ referencia = true;
+ 
+ // Podemos comprobar los tipos que guarda una variable.
+ // Función "is not a number"
+ console.log(isNaN(texto1));
+ console.log(isNaN(numero1));
+ 
+ // Otro tipo mejor de funciones pueden ser:
+ if(typeof dato == 'number') {
+	 console.log("el dato es un número");
+ }
+ 
+ if(typeof cualquiera == 'undefined') {
+	 console.log("Cualquiera no tiene tipo");
+ }
+ // Tipos en JS:
+	 // number
+	 // string
+	 // boolean
+	 // undefined
+	 // object
+	 
+ // Otra forma de declarar variables
+ // let existe a partir de las últimas versiones.
+ let num1 = 10;
+ let txt1 = "hola mundo";
+ // Con let no se puede redefinir una variable.
+ 
+ // Desde las últimas versiones también hay constantes.
+ const PI = 3.1416;
+ console.log(PI);
+ 
+ // Ámbito de las variables
+ console.log("============================");
+ function pruebaVar() {
+	 // Las variables que no tienen declaración
+	 // (no tienen ni var ni let) son de ámbito global.
+	 variable1 = "global";
+	 // Las variables con var tienen un ámbito de función.
+	 var variable2 = "local";
+	 
+	 console.log(variable1);
+	 console.log(variable2);
+	 
+	 if(2 > 1) {
+		 var variable3 = "X representa lo desconocido";
+	 }
+	 
+	 console.log(variable3);
+ }
+ 
+ // console.log(variable1); // Aquí no existe aún variable1
+ 
+ // Llamadas a funciones
+ pruebaVar();
+ console.log(variable1);
+ // console.log(variable2); // variable2 no existe en este ámbito
+ 
+ // Sin embargo, let tiene ámbito de bloque
+ function pruebaLet() {
+	 let var1 = 10;
+	 if(true) {
+		 let var2 = false;
+	 }
+	 console.log("var1: " + var1);
+	 // console.log(var2); // var2 no existe en este ámbito
+ }
+ 
+ pruebaLet();
+ 
+</script>
+
+	<h1>Variables y ámbito.</h1>
+
+</body>
+</html>

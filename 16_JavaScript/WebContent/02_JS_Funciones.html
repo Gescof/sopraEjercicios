@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// En JS las funciones son objetos
+// asociadas siempre a otro objeto.
+// No hay tipo de retorno en las funciones.
+function saludar() {
+	console.log("Hola mundo!")
+}
+
+saludar()
+// Aunque no retornemos datos, en la función se pueden pedir.
+let respuesta = saludar();
+console.log(respuesta);
+
+// Las funciones pueden recibir parámetros (sin indicar tipo)
+function sumar(n1, n2) {
+	return n1 + n2;
+}
+resultado = sumar(20, 0.5);
+console.log(resultado)
+// JS también permite invocar a las funciones con otros parámetros
+resultado = sumar()
+console.log(resultado)
+
+resultado = sumar(18)
+console.log(resultado)
+
+resultado = sumar(12, 20, 1)
+console.log(resultado)
+
+resultado = sumar("muñon", "soy", "o no")
+console.log(resultado)
+
+// Las funciones tienen implícitamente un array con los args de entrada.
+function pruebaArgumentos() {
+	console.log("============== ARGUMENTOS ==============")
+	for(let a = 0; a < arguments.length; a++) {
+		console.log(arguments[a])
+	}
+}
+
+let cosa;
+pruebaArgumentos()
+pruebaArgumentos("blabla", 1, false)
+pruebaArgumentos(235, 0.001, true, 'a')
+pruebaArgumentos(cosa)
+
+function sumaTotal() {
+	console.log("============== SUMA TOTAL ==============")
+	let total = 0
+	for(let a = 0; a < arguments.length; a++) {
+		total += arguments[a]
+	}
+	console.log(total);
+}
+
+sumaTotal(1, 134, 14, -12, "=Total")
+sumaTotal("Total=", 256, 16)
+
+function imprimir(pelicula) {
+	// Podemos tener funciones anidadas
+	function imprimirPorConsola() {
+		console.log(pelicula)
+	}
+	imprimirPorConsola(pelicula)
+}
+
+imprimir("Dos tontos muy tontos")
+
+// Como las funciones son objetos,
+// podemos hacer lo siguiente
+let multiplicar = function(m1, m2) {
+	return m1 * m2;
+}
+console.log(multiplicar(1, 2))
+console.log(multiplicar(-1, 89))
+console.log(multiplicar("pepe", 4))
+
+console.log("=====================")
+function crearDocumento(datos, funcion) {
+	console.log("Creando documento...")
+	/* if(tipoDocumento == "factura") {
+		// código para crear una factura
+	} else if(tipoDocumento == "pedido") {
+		// código para crear un pedido
+	} */
+	let codigo = function(datos) {}
+	console.log(codigo)
+}
+
+function crearCodigoFactura(cuerpo) {
+	console.log("Creando código para la factura...")
+	return ("Factura-1: lo que sea" + cuerpo)
+}
+function crearCodigoPedido(cuerpo) {
+	console.log("Creando código para el pedido...")
+	return ("Pedido-1: lo que sea" + cuerpo)
+}
+
+crearDocumento("Datos1", crearCodigoFactura());
+crearDocumento("Datos1", crearCodigoPedido());
+
+</script>
+
+</body>
+</html>
