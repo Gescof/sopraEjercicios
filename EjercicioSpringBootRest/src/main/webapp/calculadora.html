@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script>
+function enviarPeticionCalcular(){
+
+    let xmlHttp = new XMLHttpRequest()
+    
+    //Metodos de retrollamada/callbacks
+    xmlHttp.onreadystatechange = function(){
+        //propiedad readyState
+        //0-Valor inicial, simplemente hemos creado el objeto xmlHttpRequest
+        //1-Open
+        //2-Send
+        //3-Comienza a recibirse la respuesta
+        //4-Respuesta completa
+        if(this.readyState == 4){
+            if(this.status == 201) {
+                var operacion = JSON.parse(this.responseText)
+                procesarCalcular(operacion.resultado)
+            } else {
+                alert("Error")
+            }
+        }
+    }
+
+    let op1 = '\"operando1\": '
+    op1 += operando1.value;
+    let op2 = '\"operando2\": '
+    op2 += operando2.value;
+    let tipoOp = '\"tipo_operacion\": '
+    tipoOp += '\"' + tipo_operacion.value + '\"';
+    let jsonString = '{' + op1 + ', ' + op2 + ', ' + tipoOp + '}';
+    console.log(jsonString);
+
+    xmlHttp.open('POST', 
+                 'http://localhost:8080/operaciones', 
+                 true)
+    xmlHttp.setRequestHeader("Content-Type", "application/json")
+    xmlHttp.setRequestHeader("Accept", "application/json")
+    xmlHttp.send(jsonString)
+
+}
+
+function procesarCalcular(respuesta) {
+    resultado.innerHTML = "<h2>Resultado: " + respuesta + "</h2>"
+}
+
+function enviarPeticionListar(){
+
+    let xmlHttp = new XMLHttpRequest()
+    
+    //Metodos de retrollamada/callbacks
+    xmlHttp.onreadystatechange = function(){
+        //propiedad readyState
+        //0-Valor inicial, simplemente hemos creado el objeto xmlHttpRequest
+        //1-Open
+        //2-Send
+        //3-Comienza a recibirse la respuesta
+        //4-Respuesta completa
+        if(this.readyState == 4){
+            if(this.status == 200) {
+                var listaOperaciones = JSON.parse(this.responseText)
+                procesarListar(listaOperaciones)
+            } else {
+                alert("Error")
+            }
+        }
+    }
+
+    let parametros = "tipoOperacion=" + tipo_operacion.value
+    xmlHttp.open('GET', 
+                 'http://localhost:8080/operaciones' + parametros, 
+                 true)
+    xmlHttp.setRequestHeader("Content-Type", "application/json")
+    xmlHttp.send(null)
+
+}
+
+function procesarListar(respuesta) {
+    var _table_ = document.createElement('table'),
+    _tr_ = document.createElement('tr'),
+    _th_ = document.createElement('th'),
+    _td_ = document.createElement('td');
+
+    // Builds the HTML Table out of myList json data from Ivy restful service.
+    function buildHtmlTable(arr) {
+        var table = _table_.cloneNode(false),
+            columns = addAllColumnHeaders(arr, table);
+        for (var i=0, maxi=arr.length; i < maxi; ++i) {
+            var tr = _tr_.cloneNode(false);
+            for (var j=0, maxj=columns.length; j < maxj ; ++j) {
+                var td = _td_.cloneNode(false);
+                    cellValue = arr[i][columns[j]];
+                td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+        return table;
+    }
+
+    // Adds a header row to the table and returns the set of columns.
+    // Need to do union of keys from all records as some records may not contain
+    // all records
+    function addAllColumnHeaders(arr, table)
+    {
+        var columnSet = [],
+            tr = _tr_.cloneNode(false);
+        for (var i=0, l=arr.length; i < l; i++) {
+            for (var key in arr[i]) {
+                if (arr[i].hasOwnProperty(key) && columnSet.indexOf(key)===-1) {
+                    columnSet.push(key);
+                    var th = _th_.cloneNode(false);
+                    th.appendChild(document.createTextNode(key));
+                    tr.appendChild(th);
+                }
+            }
+        }
+        table.appendChild(tr);
+        return columnSet;
+    }
+    tabla_listado.innerHTML = buildHtmlTable(respuesta)
+}
+</script>
+</head>
+<body>
+    <h1 align="center" style="color:blue">Calculadora Spring Boot con AJAX</h1>
+
+    <div align="center" id="seccionFormulario">
+        <p>Operando 1 <input type="text" id="operando1"/></p>
+        <p>Operando 2 <input type="text" id="operando2"/></p>
+        <p> Tipo de operacion 
+            <select name="operacion" id="tipo_operacion">
+                <option value="suma">Suma</option>
+                <option value="resta">Resta</option>
+                <option value="producto">Producto</option>
+                <option value="division">Division</option>
+            </select>
+        </p>
+        <p>
+            <button id="btnCalcular" onclick="enviarPeticionCalcular()">Calcular</button>
+            <button id="btnListar" onclick="enviarPeticionListar()">Listar operaciones</button>
+        </p>
+    </div>
+
+    <div align="center" id="resultado"></div>
+
+    <div align="center" id="tabla_listado"></div>
+</body>
+</html>

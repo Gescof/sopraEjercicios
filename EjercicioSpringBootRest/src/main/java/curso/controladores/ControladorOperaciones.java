@@ -30,7 +30,7 @@ public class ControladorOperaciones {
 	public ResponseEntity<Operacion> insertar(@RequestBody Operacion operacion) {
 		try {
 			gestorOperaciones.insertarOperacion(operacion);
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			return new ResponseEntity<>(operacion, HttpStatus.CREATED);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(operacion, HttpStatus.BAD_REQUEST);
